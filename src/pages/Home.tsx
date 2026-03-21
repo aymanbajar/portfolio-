@@ -304,7 +304,7 @@ export default function Home() {
               }}
             >
               <img
-                src="../../public/myPhoto.jpg"
+                 src="/myPhoto.jpg"
                 alt="Ayman Bajar"
                 className="w-full h-full object-cover object-top"
                 style={{ display: "block" }}
