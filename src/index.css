@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Cairo Font - Multiple Weights */
+@font-face {
+  font-family: 'Cairo';
+  src: url('./assets/fonts/Cairo/Cairo-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('./assets/fonts/Cairo/Cairo-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('./assets/fonts/Cairo/Cairo-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Cairo';
+  src: url('./assets/fonts/Cairo/Cairo-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* English Font */
+@font-face {
+  font-family: 'Cairo-Eng';
+  src: url('./assets/fonts/CairoEnglish/IMFellEnglish-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Custom Font Utilities */
+@layer utilities {
+  .font-Cairo {
+    font-family: 'Cairo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .font-Cairo-Eng {
+    font-family: 'Cairo-Eng', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Improve text rendering */
+* {
+  text-rendering: optimizeLegibility;
+}
