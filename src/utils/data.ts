@@ -51,7 +51,7 @@ export const dataProjects: ProjectData[] = [
     description:
       'A full-stack hotel management and appointment booking system.',
     link:      'https://hotel-management-system-five-fawn.vercel.app/',
-    imageUrl:  'hotel',
+    imageUrl:  hotel,
     githubUrl: 'https://github.com/aymanbajar/hotel-management-system',
     toolsUsed: [
       TECH.react, TECH.tailwind, TECH.mongodb,
