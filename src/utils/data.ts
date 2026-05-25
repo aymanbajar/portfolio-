@@ -46,6 +46,19 @@ export interface ProjectData {
 export const dataProjects: ProjectData[] = [
   {
     id: 1,
+    title: 'Hotel  managment and Appointment Booking system',
+    description:
+      'A full-stack hotel management and appointment booking system.',
+    link:      'https://hotel-management-system-five-fawn.vercel.app/',
+    imageUrl:  'hotel',
+    githubUrl: 'https://github.com/aymanbajar/hotel-management-system',
+    toolsUsed: [
+      TECH.react, TECH.tailwind, TECH.mongodb,
+      TECH.express, TECH.nodejs, TECH.javascript,
+    ],
+  },
+  {
+    id: 2,
     title: 'Doctor Appointment Booking',
     description:
       'A full-stack booking system where patients schedule appointments with doctors, view available slots, and receive notifications. Built with the MERN stack and a clean Tailwind UI.',
@@ -58,7 +71,7 @@ export const dataProjects: ProjectData[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: 'E-Commerce MERN Stack',
     description:
       'A comprehensive e-commerce app with user authentication, product listings, shopping cart, and order management — fully responsive with a TypeScript + React frontend.',
@@ -71,7 +84,7 @@ export const dataProjects: ProjectData[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: 'Travel',
     description:
       'A travel website showcasing destinations, accommodations, and tips with visually appealing imagery and smooth navigation to help users plan trips effectively.',
@@ -81,7 +94,7 @@ export const dataProjects: ProjectData[] = [
     toolsUsed: [TECH.html, TECH.css, TECH.javascript],
   },
   {
-    id: 5,
+    id: 6,
     title: 'Movies',
     description:
       'An interactive movie display page featuring a Swiper carousel and a card gallery with clickable images linking to their respective streaming pages.',
@@ -91,7 +104,7 @@ export const dataProjects: ProjectData[] = [
     toolsUsed: [TECH.html, TECH.css, TECH.javascript],
   },
   {
-    id: 6,
+    id: 7,
     title: 'Leon — First Project',
     description:
       'My first HTML & CSS project — a fully responsive multi-section website for a fictional agency "Leon", covering Home, About, Services, and Contact with a clean, modern aesthetic.',
@@ -101,7 +114,7 @@ export const dataProjects: ProjectData[] = [
     toolsUsed: [TECH.html, TECH.css],
   },
   {
-    id: 7,
+    id: 8,
     title: 'Kasper',
     description:
       'A responsive landing page for Kasper antivirus software built with pure HTML & CSS. Focused on showcasing features through visually appealing layouts and interactive elements.',
