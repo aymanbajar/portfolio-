@@ -3,6 +3,7 @@ import movies  from '../assets/imagesProjects/movies.png';
 import kapser  from '../assets/imagesProjects/kapser.png';
 import travel  from '../assets/imagesProjects/travel.png';
 import doctor  from '../assets/imagesProjects/doctor.png';
+import hotel   from '../assets/imagesProjects/hotel.png';
 
 import {
   SiHtml5, SiCss3, SiJavascript, SiTypescript,
