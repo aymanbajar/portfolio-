@@ -4,6 +4,7 @@ import kapser  from '../assets/imagesProjects/kapser.png';
 import travel  from '../assets/imagesProjects/travel.png';
 import doctor  from '../assets/imagesProjects/doctor.png';
 import hotel   from '../assets/imagesProjects/hotel.png';
+import adminDoctor   from '../assets/imagesProjects/admin-doctor.png';
 
 import {
   SiHtml5, SiCss3, SiJavascript, SiTypescript,
@@ -63,7 +64,7 @@ export const dataProjects: ProjectData[] = [
     title: 'Doctor Appointment Booking',
     description:
       'A full-stack booking system where patients schedule appointments with doctors, view available slots, and receive notifications. Built with the MERN stack and a clean Tailwind UI.',
-    link:      'https://dector-app-booking-system-z5fe.vercel.app/',
+    link:      'https://dector-app-booking-system.vercel.app/',
     imageUrl:  doctor,
     githubUrl: 'https://github.com/aymanbajar/DectorAppBookingSystem?tab=readme-ov-file',
     toolsUsed: [
@@ -73,6 +74,19 @@ export const dataProjects: ProjectData[] = [
   },
   {
     id: 3,
+    title: 'Admin and Doctor  Appointment Booking dashbaord',
+    description:
+      'A full-stack booking system where patients schedule appointments with doctors, view available slots, and receive notifications. Built with the MERN stack and a clean Tailwind UI.',
+    link:      'https://dector-app-booking-system-alor.vercel.app/',
+    imageUrl:  adminDoctor,
+    githubUrl: 'https://github.com/aymanbajar/DectorAppBookingSystem?tab=readme-ov-file',
+    toolsUsed: [
+      TECH.react, TECH.tailwind, TECH.mongodb,
+      TECH.express, TECH.nodejs, TECH.javascript,
+    ],
+  },
+  {
+    id: 4,
     title: 'E-Commerce MERN Stack',
     description:
       'A comprehensive e-commerce app with user authentication, product listings, shopping cart, and order management — fully responsive with a TypeScript + React frontend.',
