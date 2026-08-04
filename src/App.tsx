@@ -5,26 +5,31 @@ import { ThemeProvider } from "./hooks/context/Theme/ThemeProvider";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Footer from "./layout/Footer";
-import NetworkAnimation from "./Components/NetworkAnimation";
 import MyProjects from "./pages/MyProjects";
+import Education from "./pages/Education";
 import Contact from "./pages/Contact";
+
 function App() {
   return (
-    <div>
-      <NetworkAnimation />
-       <LanguageProvider>
-        <ThemeProvider>
-         <Navbar />
-         
-            <div id="home"><Home /></div>
-            <div id="about"><About/></div>
-            <div id="my-projects"><MyProjects/></div>
-            <div id="contact"><Contact/></div>
-        
-        <Footer />
-        </ThemeProvider>
-      </LanguageProvider>
-    </div>
+    <LanguageProvider>
+      <ThemeProvider>
+        <div className="app-shell">
+          <Navbar />
+          <main>
+            <div id="home" className="section-anchor">
+              <Home />
+            </div>
+            <About />
+            <MyProjects />
+            <Education />
+            <div id="contact" className="section-anchor">
+              <Contact />
+            </div>
+          </main>
+          <Footer />
+        </div>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

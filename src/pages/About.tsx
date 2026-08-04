@@ -4,9 +4,11 @@ import { useLanguage } from "../hooks/context/Language/LanguageContext";
 import NetworkAnimation from "../Components/NetworkAnimation";
 import {
   SiHtml5, SiCss3, SiJavascript, SiTypescript,
-  SiReact, SiNodedotjs, SiExpress, SiMongodb,
-  SiPostman, SiTailwindcss, SiGit, SiGithub, SiDocker,
+  SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiNestjs, SiFastapi,
+  SiMongodb, SiMysql, SiPostgresql, SiPrisma, SiPostman,
+  SiTailwindcss, SiGit, SiGithub, SiDocker,
 } from "react-icons/si";
+import { TbApi } from "react-icons/tb";
 
 const skills = [
   { icon: SiHtml5,      name: "HTML5",      color: "#e34f26" },
@@ -14,9 +16,16 @@ const skills = [
   { icon: SiJavascript, name: "JavaScript", color: "#f7df1e" },
   { icon: SiTypescript, name: "TypeScript", color: "#3178c6" },
   { icon: SiReact,      name: "React",      color: "#61dafb" },
+  { icon: SiNextdotjs,  name: "Next.js",    color: "#888888" },
   { icon: SiNodedotjs,  name: "Node.js",    color: "#339933" },
   { icon: SiExpress,    name: "Express",    color: "#888888" },
+  { icon: TbApi,        name: "REST API",   color: "#6366f1" },
+  { icon: SiNestjs,     name: "NestJS",     color: "#e0234e" },
+  { icon: SiFastapi,    name: "FastAPI",    color: "#009688" },
   { icon: SiMongodb,    name: "MongoDB",    color: "#47a248" },
+  { icon: SiMysql,      name: "MySQL",      color: "#4479a1" },
+  { icon: SiPostgresql, name: "PostgreSQL", color: "#4169e1" },
+  { icon: SiPrisma,     name: "Prisma",     color: "#64748b" },
   { icon: SiTailwindcss,name: "Tailwind",   color: "#38bdf8" },
   { icon: SiPostman,    name: "Postman",    color: "#ff6c37" },
   { icon: SiGit,        name: "Git",        color: "#f05032" },
@@ -145,7 +154,7 @@ export default function About() {
           {[
             { value: "+2",  label: t("Years Exp.") },
             { value: "+6", label: t("Projects")   },
-            { value: "13",  label: t("Skills")      },
+            { value: String(skills.length), label: t("Skills") },
           ].map(({ value, label }) => (
             <div
               key={label}

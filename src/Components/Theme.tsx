@@ -1,21 +1,25 @@
-import { FaMoon } from "react-icons/fa";
-import { IoSunny } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
+import { HiOutlineMoon, HiOutlineSun } from "react-icons/hi";
 import { useTheme } from "../hooks/context/Theme/ThemeContext";
+
 export default function Theme() {
-   const{theme, setTheme} = useTheme ();
-    return(
-        <>
-         <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                  className="p-2 rounded-full   bg-gray-200 hover:bg-gray-300  transition-all duration-300">
-                  {theme === "light" ? (
-                    <FaMoon className="w-6 h-6 text-gray-800" />
-                  ) : (
-                    <IoSunny className="w-6 h-6 text-yellow-400" />
-                  )}
-                  
-                </button>
-        
-        
-        </>
-    )
+  const { t } = useTranslation();
+  const { theme, setTheme } = useTheme();
+  const isLight = theme === "light";
+
+  return (
+    <button
+      type="button"
+      className="icon-button"
+      onClick={() => setTheme(isLight ? "dark" : "light")}
+      aria-label={t(isLight ? "Switch to dark mode" : "Switch to light mode")}
+      title={t(isLight ? "Switch to dark mode" : "Switch to light mode")}
+    >
+      {isLight ? (
+        <HiOutlineMoon aria-hidden="true" />
+      ) : (
+        <HiOutlineSun aria-hidden="true" />
+      )}
+    </button>
+  );
 }

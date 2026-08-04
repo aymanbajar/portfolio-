@@ -1,184 +1,155 @@
-import { useState, useEffect } from "react";
-import { useTheme } from "../hooks/context/Theme/ThemeContext";
-import { useLanguage } from "../hooks/context/Language/LanguageContext";
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
+import LanguageMenu from "../Components/LanguageMenu";
 import Logo from "../Components/Logo";
 import Menu from "../Components/Menu";
-import LanguageMenu from "../Components/LanguageMenu";
 import Theme from "../Components/Theme";
-import { CiMenuBurger } from "react-icons/ci";
-import { IoClose } from "react-icons/io5";
+import { useLanguage } from "../hooks/context/Language/LanguageContext";
 
 export default function Navbar() {
-  const { theme } = useTheme();
+  const { t } = useTranslation();
   const { language } = useLanguage();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
 
-  // Shrink + blur navbar on scroll
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 16);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu open
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+    if (!isMenuOpen) return;
+
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const focusableSelector =
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    const focusTimer = window.setTimeout(() => {
+      drawerRef.current
+        ?.querySelector<HTMLElement>(focusableSelector)
+        ?.focus();
+    }, 50);
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab" || !drawerRef.current) return;
+
+      const focusable = Array.from(
+        drawerRef.current.querySelectorAll<HTMLElement>(focusableSelector)
+      );
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+
     return () => {
+      window.clearTimeout(focusTimer);
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleKeyDown);
+      previouslyFocused?.focus();
     };
   }, [isMenuOpen]);
 
-  const isLight = theme === "light";
+  useEffect(() => {
+    const closeOnDesktop = () => {
+      if (window.innerWidth >= 920) setIsMenuOpen(false);
+    };
+    window.addEventListener("resize", closeOnDesktop);
+    return () => window.removeEventListener("resize", closeOnDesktop);
+  }, []);
+
+  const closeMenu = () => setIsMenuOpen(false);
+  const direction = language === "ar" ? "rtl" : "ltr";
 
   return (
     <>
-      {/* ── Main Navbar ── */}
       <header
-        dir={language === "ar" ? "rtl" : "ltr"}
-        className={`
-          fixed top-0 left-0 right-0 z-40
-          flex items-center justify-between
-          transition-all duration-500 ease-in-out
-          ${language === "ar" ? "font-Cairo" : "font-Cairo-Eng"}
-          ${
-            scrolled
-              ? `px-4 py-3 mx-4 mt-3 
-               ${
-                 isLight
-                   ? " border-gray-200/60 text-gray-700"
-                   : " border-gray-700/50 text-gray-200"
-               }`
-              : `px-6 py-5
-               ${
-                 isLight
-                   ? "bg-white/0 text-gray-700"
-                   : "bg-gray-900/0 text-gray-200"
-               }`
-          }
-        `}
+        dir={direction}
+        className={`site-header ${scrolled ? "is-scrolled" : ""}`}
       >
-        {/* Logo */}
-        <Logo />
+        <div className="site-container navbar-panel">
+          <Logo onNavigate={closeMenu} />
 
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex">
-          <Menu />
-        </nav>
+          <nav className="desktop-navigation" aria-label={t("Main navigation")}>
+            <Menu />
+          </nav>
 
-        {/* Desktop Actions */}
-        <div className="hidden md:flex items-center gap-3">
-          <LanguageMenu />
-          <Theme />
+          <div className="navbar-actions">
+            <LanguageMenu />
+            <Theme />
+          </div>
+
+          <button
+            ref={menuButtonRef}
+            type="button"
+            className="icon-button mobile-menu-button"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label={t("Open navigation menu")}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
+          >
+            <HiOutlineMenuAlt3 aria-hidden="true" />
+          </button>
         </div>
-
-        {/* Mobile Burger */}
-        <button
-          className={`
-            md:hidden flex items-center justify-center
-            w-10 h-10 rounded-xl transition-all duration-300
-            ${
-              isLight
-                ? "bg-gray-100 hover:bg-gray-200 text-gray-700"
-                : "bg-gray-800 hover:bg-gray-700 text-gray-200"
-            }
-          `}
-          onClick={() => setIsMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          <CiMenuBurger size={18} />
-        </button>
       </header>
 
-      {/* ── Mobile Drawer ── */}
-
-      {/* Backdrop */}
-      <div
-        onClick={() => setIsMenuOpen(false)}
-        className={`
-          fixed inset-0 z-50 transition-all duration-400
-          ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
-          ${isLight ? "bg-black/20" : "bg-black/50"} backdrop-blur-sm
-        `}
+      <button
+        type="button"
+        className={`nav-backdrop ${isMenuOpen ? "is-open" : ""}`}
+        onClick={closeMenu}
+        aria-label={t("Close navigation menu")}
+        tabIndex={isMenuOpen ? 0 : -1}
       />
 
-      {/* Drawer panel */}
       <aside
-        dir={language === "ar" ? "rtl" : "ltr"}
-        className={`
-          fixed top-0 z-50 h-full w-4/5 max-w-xs
-          flex flex-col
-          transition-transform duration-400 ease-in-out
-          ${language === "ar" ? "left-0" : "right-0"}
-          ${
-            isMenuOpen
-              ? "translate-x-0"
-              : language === "ar"
-                ? "-translate-x-full"
-                : "translate-x-full"
-          }
-          ${
-            isLight
-              ? "bg-white/0 text-gray-800"
-              : "bg-gray-900/90 text-gray-100"
-          }
-          backdrop-blur-2xl shadow-2xl
-        `}
+        ref={drawerRef}
+        id="mobile-navigation"
+        dir={direction}
+        className={`mobile-drawer ${isMenuOpen ? "is-open" : ""}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label={t("Main navigation")}
+        aria-hidden={!isMenuOpen}
       >
-        {/* Drawer header */}
-        <div
-          className={`
-          flex items-center justify-between px-6 py-5
-          border-b ${isLight ? "border-gray-100" : "border-gray-800"}
-        `}
-        >
-          <Logo />
+        <div className="mobile-drawer-header">
+          <Logo onNavigate={closeMenu} />
           <button
-            onClick={() => setIsMenuOpen(false)}
-            className={`
-              flex items-center justify-center w-9 h-9 rounded-xl
-              transition-all duration-200
-              ${
-                isLight
-                  ? "bg-gray-100 hover:bg-gray-200 text-gray-600"
-                  : "bg-gray-800 hover:bg-gray-700 text-gray-300"
-              }
-            `}
-            aria-label="Close menu"
+            type="button"
+            className="icon-button"
+            onClick={closeMenu}
+            aria-label={t("Close navigation menu")}
           >
-            <IoClose size={18} />
+            <HiX aria-hidden="true" />
           </button>
         </div>
 
-        {/* Drawer nav links */}
-        <div className="flex-1 flex flex-col justify-center px-6">
-          <Menu />
-        </div>
+        <nav className="mobile-navigation" aria-label={t("Main navigation")}>
+          <Menu variant="mobile" onNavigate={closeMenu} />
+        </nav>
 
-        {/* Drawer footer */}
-        <div
-          className={`
-  relative flex items-center justify-center gap-4 px-6 py-6
-  border-t overflow-hidden
-  ${isLight ? "border-white/20" : "border-white/10"}
-`}
-        >
-          {/* Ambient glow */}
-          <div
-            className="absolute inset-0 -z-10 blur-2xl opacity-20 scale-110"
-            style={{
-              background:
-                "linear-gradient(to right, #38bdf8, #818cf8, #c084fc)",
-            }}
-          />
-
-          {/* Top reflection shimmer */}
-          <div className="absolute top-0 left-6 right-6 h-px rounded-full bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-
-          {/* Glass surface */}
-          <div className="absolute inset-0 backdrop-blur-2xl -z-10" />
-
-          <LanguageMenu />
+        <div className="mobile-drawer-footer">
+          <LanguageMenu placement="top" />
           <Theme />
         </div>
       </aside>
