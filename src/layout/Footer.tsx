@@ -8,7 +8,7 @@ export default function Footer() {
     const { theme } = useTheme();
     
   return (
-    <footer className={`w-full py-4 text-center ${theme === "light" ? "bg-slate-50 text-gray-600" : "bg-[#080c14] text-gray-300"} border-t ${theme === "light" ? "border-gray-200" : "border-white/[0.06]"}`}>
+    <footer className={`site-footer w-full py-4 text-center ${theme === "light" ? "text-gray-600" : "text-gray-300"} border-t ${theme === "light" ? "border-gray-200" : "border-white/[0.06]"}`}>
       <p
       dir={language === "ar" ? "rtl" : "ltr"}
       className="text-sm">&copy; {new Date().getFullYear()} {t('developed by Ayman Bajar. All rights reserved.')}</p>

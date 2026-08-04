@@ -99,8 +99,6 @@ export default function Contact() {
       dir={language === "ar" ? "rtl" : "ltr"}
       aria-labelledby="contact-title"
     >
-      <div className="contact-background" aria-hidden="true" />
-
       <div className="site-container contact-layout">
         <div className="contact-intro">
           <div className="contact-eyebrow">

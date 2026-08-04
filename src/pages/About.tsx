@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../hooks/context/Theme/ThemeContext";
 import { useLanguage } from "../hooks/context/Language/LanguageContext";
-import NetworkAnimation from "../Components/NetworkAnimation";
 import {
   SiHtml5, SiCss3, SiJavascript, SiTypescript,
   SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiNestjs, SiFastapi,
@@ -46,26 +45,13 @@ export default function About() {
       id="about"
       dir={isRtl ? "rtl" : "ltr"}
       className={`
-        relative min-h-screen overflow-hidden
+        about-section relative min-h-screen overflow-hidden
         flex flex-col items-center justify-center
         px-5 sm:px-8 md:px-12 lg:px-20 py-24 gap-20
         ${isRtl ? "font-Cairo" : "font-Cairo-Eng"}
-        ${isLight ? "bg-slate-50 text-gray-900" : "bg-[#080c14] text-gray-100"}
+        ${isLight ? "text-gray-900" : "text-gray-100"}
       `}
     >
-      {/* Network Animation */}
-      <NetworkAnimation />
-
-      {/* ── Background glow ── */}
-      <div
-        className="absolute inset-0 -z-10 pointer-events-none"
-        style={{
-          background: isLight
-            ? "radial-gradient(ellipse 70% 50% at 50% 100%, rgba(129,140,248,0.10) 0%, transparent 70%)"
-            : "radial-gradient(ellipse 70% 50% at 50% 100%, rgba(129,140,248,0.07) 0%, transparent 70%)",
-        }}
-      />
-
       {/* ══════════════════════════════
           ABOUT ME
       ══════════════════════════════ */}

@@ -15,7 +15,7 @@ function App() {
       <ThemeProvider>
         <div className="app-shell">
           <Navbar />
-          <main>
+          <main className="site-main">
             <div id="home" className="section-anchor">
               <Home />
             </div>

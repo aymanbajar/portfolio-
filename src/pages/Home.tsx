@@ -13,8 +13,6 @@ export default function Home() {
       className="hero"
       aria-labelledby="hero-title"
     >
-      <div className="hero-decoration" aria-hidden="true" />
-
       <div className="site-container hero-grid">
         <div className="hero-copy">
           <div className="availability-badge hero-reveal">

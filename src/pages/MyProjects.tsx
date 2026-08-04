@@ -3,7 +3,6 @@ import { HiArrowRight } from "react-icons/hi";
 import { SiGithub } from "react-icons/si";
 import { FeaturedProject } from "../Components/ProjectCard";
 import ProjectCard from "../Components/ProjectCard";
-import NetworkAnimation from "../Components/NetworkAnimation";
 import { useLanguage } from "../hooks/context/Language/LanguageContext";
 import { dataProjects } from "../utils/data";
 
@@ -20,9 +19,6 @@ export default function MyProjects() {
       className="projects-section"
       aria-labelledby="projects-heading"
     >
-      <NetworkAnimation />
-      <div className="projects-background" aria-hidden="true" />
-
       <div className="site-container projects-shell">
         <header className="projects-header">
           <span className="projects-eyebrow">
