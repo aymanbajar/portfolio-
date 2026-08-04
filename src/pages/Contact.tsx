@@ -94,19 +94,23 @@ export default function Contact() {
   const { language } = useLanguage();
 
   return (
-    <section
-      className="contact-section"
-      dir={language === "ar" ? "rtl" : "ltr"}
-      aria-labelledby="contact-title"
-    >
-      <div className="site-container contact-layout">
+
+      <div 
+            dir={language === "ar" ? "rtl" : "ltr"}
+
+      className="site-container contact-layout mt-8">
         <div className="contact-intro">
           <div className="contact-eyebrow">
             <span aria-hidden="true" />
             {t("Contact")}
           </div>
 
-          <h2 id="contact-title">{t("Let's Build Something Great")}</h2>
+          <h2  className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight "
+            style={{
+              background: "linear-gradient(135deg, #38bdf8, #818cf8, #c084fc)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }} id="contact-title">{t("Let's Build Something Great")}</h2>
 
           <p className="contact-description">
             {t(
@@ -146,6 +150,5 @@ export default function Contact() {
           </ul>
         </div>
       </div>
-    </section>
   );
 }

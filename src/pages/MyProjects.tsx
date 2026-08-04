@@ -13,19 +13,22 @@ export default function MyProjects() {
   const additionalProjects = dataProjects.filter((project) => !project.featured);
 
   return (
-    <section
-      id="my-projects"
+
+      <div
+       id="my-projects"
       dir={language === "ar" ? "rtl" : "ltr"}
-      className="projects-section"
-      aria-labelledby="projects-heading"
-    >
-      <div className="site-container projects-shell">
+      className="site-container projects-shell">
         <header className="projects-header">
           <span className="projects-eyebrow">
             <i aria-hidden="true" />
             {t("Selected Work")}
           </span>
-          <h2 id="projects-heading">{t("Featured Projects")}</h2>
+          <h2  className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-center"
+            style={{
+              background: "linear-gradient(135deg, #38bdf8, #818cf8, #c084fc)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }} id="projects-heading">{t("Featured Projects")}</h2>
           <p>
             {t(
               "Production-oriented applications built across the full stack, from responsive interfaces to secure APIs and role-based workflows."
@@ -50,12 +53,18 @@ export default function MyProjects() {
           className="additional-projects"
           aria-labelledby="additional-projects-heading"
         >
-          <header className="additional-projects-header">
+          <header className="additional-projects-header ">
             <div>
               <span>{t("More Projects")}</span>
-              <h2 id="additional-projects-heading">{t("Additional Work")}</h2>
+              <h2  className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight "
+            style={{
+              background: "linear-gradient(135deg, #38bdf8, #818cf8, #c084fc)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }} id="additional-projects-heading">{t("Additional Work")}</h2>
             </div>
-            <p>
+            <p
+            >
               {t(
                 "Additional frontend and full-stack work, each linked to its live implementation and source."
               )}
@@ -68,21 +77,6 @@ export default function MyProjects() {
             ))}
           </div>
         </section>
-
-        <footer className="projects-footer">
-          <p>{t("Explore the complete project archive on GitHub.")}</p>
-          <a
-            href="https://github.com/aymanbajar"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t("View all projects on GitHub")}
-          >
-            <SiGithub aria-hidden="true" />
-            <span>{t("View all projects on GitHub")}</span>
-            <HiArrowRight aria-hidden="true" />
-          </a>
-        </footer>
       </div>
-    </section>
-  );
+    );
 }

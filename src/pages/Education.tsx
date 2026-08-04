@@ -24,7 +24,7 @@ export default function Education() {
     <section
       id="education"
       dir={language === "ar" ? "rtl" : "ltr"}
-      className="education-section section-anchor"
+      className="mt-5 section-anchor"
       aria-labelledby="education-heading"
     >
       <div className="site-container education-shell">
@@ -33,7 +33,12 @@ export default function Education() {
             <i aria-hidden="true" />
             {t("Academic Background")}
           </span>
-          <h2 id="education-heading">{t("Education")}</h2>
+          <h2  className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-center"
+            style={{
+              background: "linear-gradient(135deg, #38bdf8, #818cf8, #c084fc)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }} id="education-heading">{t("Education")}</h2>
           <p>
             {t(
               "My academic journey in Computer Engineering and the technical foundation that supports my work as a Full Stack Developer."
@@ -41,7 +46,9 @@ export default function Education() {
           </p>
         </header>
 
-        <article className="education-card" aria-labelledby="education-degree">
+        <article 
+        
+        className="education-card" aria-labelledby="education-degree">
           <div className="education-icon" aria-hidden="true">
             <HiOutlineAcademicCap />
           </div>
