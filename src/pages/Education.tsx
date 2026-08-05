@@ -47,7 +47,6 @@ export default function Education() {
         </header>
 
         <article 
-        
         className="education-card" aria-labelledby="education-degree">
           <div className="education-icon" aria-hidden="true">
             <HiOutlineAcademicCap />
