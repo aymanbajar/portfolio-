@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { HiOutlineExternalLink, HiOutlineShoppingBag } from "react-icons/hi";
 import { SiGithub } from "react-icons/si";
 import type { ProjectData, TechItem } from "../utils/data";
+import { useTheme } from "../hooks/context/Theme/ThemeContext";
 
 interface ProjectVisualProps {
   project: ProjectData;
@@ -138,12 +139,17 @@ export default function ProjectCard({
   featuredIndex,
 }: ProjectCardProps) {
   const { t } = useTranslation();
+  const { theme } = useTheme();
+  const isLight = theme === "light";
 
   return (
-    <article className="project-card" aria-labelledby={`${project.slug}-title`}>
+    <article className="project-card " aria-labelledby={`${project.slug}-title`}>
       <ProjectVisual project={project} />
 
-      <div className="project-card-content">
+      <div className={`project-card-content  ${isLight
+              ? "bg-white "
+              : "bg-white/5"
+            }`}>
         <div className="project-meta">
           <span className="project-category">{t(project.category)}</span>
           <span>{project.role}</span>
