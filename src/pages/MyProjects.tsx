@@ -1,6 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { HiArrowRight } from "react-icons/hi";
-import { SiGithub } from "react-icons/si";
 import { FeaturedProject } from "../Components/ProjectCard";
 import ProjectCard from "../Components/ProjectCard";
 import { useLanguage } from "../hooks/context/Language/LanguageContext";
