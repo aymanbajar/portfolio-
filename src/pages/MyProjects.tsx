@@ -12,10 +12,11 @@ export default function MyProjects() {
 
   return (
 
-      <div
-       id="my-projects"
+      <section
+      id="my-projects"
       dir={language === "ar" ? "rtl" : "ltr"}
-      className="site-container projects-shell">
+      className="site-container projects-shell"
+      aria-labelledby="projects-heading">
         <header className="projects-header">
           <span className="projects-eyebrow">
             <i aria-hidden="true" />
@@ -75,6 +76,6 @@ export default function MyProjects() {
             ))}
           </div>
         </section>
-      </div>
+      </section>
     );
 }

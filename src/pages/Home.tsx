@@ -9,8 +9,9 @@ export default function Home() {
 
   return (
     <section
+      id="home"
       dir={language === "ar" ? "rtl" : "ltr"}
-      className="hero"
+      className="hero section-anchor"
       aria-labelledby="hero-title"
     >
       <div className="site-container hero-grid">

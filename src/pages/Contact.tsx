@@ -95,10 +95,10 @@ export default function Contact() {
 
   return (
 
-      <div 
-            dir={language === "ar" ? "rtl" : "ltr"}
-
-      className="site-container contact-layout mt-8">
+      <div
+        dir={language === "ar" ? "rtl" : "ltr"}
+        className="site-container contact-layout mt-8"
+      >
         <div className="contact-intro">
           <div className="contact-eyebrow">
             <span aria-hidden="true" />

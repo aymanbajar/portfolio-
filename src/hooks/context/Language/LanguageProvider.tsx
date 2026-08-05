@@ -9,6 +9,7 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     useEffect(() => {
         i18n.changeLanguage(language);
         localStorage.setItem("language", language);
+        document.documentElement.lang = language;
     }, [language, i18n]);
 
     return (

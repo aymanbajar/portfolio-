@@ -44,6 +44,7 @@ export default function About() {
     <section
       id="about"
       dir={isRtl ? "rtl" : "ltr"}
+      aria-labelledby="about-heading"
       className={`
         about-section relative min-h-screen overflow-hidden
         flex flex-col items-center justify-center
@@ -71,6 +72,7 @@ export default function About() {
           </span>
 
           <h2
+            id="about-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-center"
             style={{
               background: "linear-gradient(135deg, #38bdf8, #818cf8, #c084fc)",
@@ -179,7 +181,10 @@ export default function About() {
       {/* ══════════════════════════════
           MY SKILLS
       ══════════════════════════════ */}
-      <div className="w-full max-w-4xl flex flex-col items-center gap-8">
+      <section
+        className="w-full max-w-4xl flex flex-col items-center gap-8"
+        aria-labelledby="skills-heading"
+      >
 
         {/* Section heading */}
         <div className="flex flex-col items-center gap-3">
@@ -195,6 +200,7 @@ export default function About() {
           </span>
 
           <h2
+            id="skills-heading"
             className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-center"
             style={{
               background: "linear-gradient(135deg, #818cf8, #c084fc)",
@@ -282,7 +288,7 @@ export default function About() {
             ))}
           </ul>
         </div>
-      </div>
+      </section>
     </section>
   );
 }

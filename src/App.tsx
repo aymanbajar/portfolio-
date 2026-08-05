@@ -16,15 +16,17 @@ function App() {
         <div className="app-shell">
           <Navbar />
           <main className="site-main">
-            <div id="home" className="section-anchor">
-              <Home />
-            </div>
+            <Home />
             <About />
             <MyProjects />
             <Education />
-            <div id="contact" className="section-anchor">
+            <section
+              id="contact"
+              className="section-anchor"
+              aria-labelledby="contact-title"
+            >
               <Contact />
-            </div>
+            </section>
           </main>
           <Footer />
         </div>

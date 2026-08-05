@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-wheat-alpha-19.vercel.app/sitemap.xml
